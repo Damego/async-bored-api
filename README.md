@@ -18,3 +18,7 @@ async def main():
 
 asyncio.run(main())
 ```
+
+## Documentation and API Reference:
+
+https://damego.gitbook.io/async-bored-api/

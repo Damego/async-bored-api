@@ -1,6 +1,5 @@
-import asyncio
-from enum import Enum
 from dataclasses import dataclass
+from enum import Enum
 from typing import Union, Optional
 
 from aiohttp import ClientSession
@@ -54,7 +53,7 @@ class BoredClient:
         max_price: Optional[float] = None,
         accessibility: Optional[float] = None,
         min_accessibility: Optional[float] = None,
-        max_accessibility: Optional[float] = None
+        max_accessibility: Optional[float] = None,
     ) -> BoredActivity:
         """
         Gets a event with given parameters or random event if parameters not given.
@@ -93,7 +92,10 @@ class BoredClient:
             payload["max_accessibility"] = max_accessibility
 
         data = await self._get_request(
-            self.BASE_URL + "&".join(f"{key.replace('_', '')}={value}" for key, value in payload.items())
+            self.BASE_URL
+            + "&".join(
+                f"{key.replace('_', '')}={value}" for key, value in payload.items()
+            )
         )
         if "type" in data:
             data["type"] = ActivityType[data["type"].upper()]
@@ -125,7 +127,9 @@ class BoredClient:
 
         :return: BoredActivity
         """
-        return await self.get(type=type.value if isinstance(type, ActivityType) else type)
+        return await self.get(
+            type=type.value if isinstance(type, ActivityType) else type
+        )
 
     async def get_by_participants(self, participants: int) -> BoredActivity:
         """
@@ -145,7 +149,9 @@ class BoredClient:
         """
         return await self.get(price=price)
 
-    async def get_by_min_max_price(self, min_price: float, max_price: float) -> BoredActivity:
+    async def get_by_min_max_price(
+        self, min_price: float, max_price: float
+    ) -> BoredActivity:
         """
         Find an event with a specified price in an inclusively constrained range.
         :param min_price: The minimal price for activity. Start from 0.
@@ -164,7 +170,9 @@ class BoredClient:
         """
         return await self.get(accessibility=accessibility)
 
-    async def get_by_min_max_accessibility(self, min_accessibility: float, max_accessibility: float) -> BoredActivity:
+    async def get_by_min_max_accessibility(
+        self, min_accessibility: float, max_accessibility: float
+    ) -> BoredActivity:
         """
         Find an event with a specified accessibility in an inclusively constrained range.
         :param min_accessibility: The minimal accessibility. Start from 0.
@@ -172,4 +180,6 @@ class BoredClient:
 
         :return: BoredActivity
         """
-        return await self.get(min_accessibility=min_accessibility, max_accessibility=max_accessibility)
+        return await self.get(
+            min_accessibility=min_accessibility, max_accessibility=max_accessibility
+        )

@@ -4,6 +4,8 @@
 
 Represents activities types.
 
+{% tabs %}
+{% tab title="Attributes" %}
 * EDUCATION = "education"&#x20;
 * RECREATIONAL = "recreational"&#x20;
 * SOCIAL = "social"&#x20;
@@ -13,6 +15,8 @@ Represents activities types.
 * RELAXATION = "relaxation"&#x20;
 * MUSIC = "music"&#x20;
 * BUSYWORK = "busywork"
+{% endtab %}
+{% endtabs %}
 
 ## BoredActivity
 
@@ -141,13 +145,5 @@ Find an event with a specified accessibility in an inclusively constrained range
 
 **Returns** `BoredActivity`
 {% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
-
-
-
-
 

@@ -12,8 +12,8 @@ import asyncio
 import bored_api
 
 async def main():
-  client = BoredClient()
-  activity = await client.get_by_type(ActivityType.BUSYWORK)
+  client = bored_api.BoredClient()
+  activity = await client.get_by_type(bored_api.ActivityType.BUSYWORK)
   print(activity.activity)
 
 asyncio.run(main())

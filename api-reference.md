@@ -57,7 +57,7 @@ Gets a event with given parameters or random event if parameters not given.
 * min\_accessibility: `Optional[float]` = None
 * max\_accessibility: `Optional[float]` = None
 
-**Return** BoredActivity\
+**Returns** `BoredActivity`\
 
 
 ### get\_random()

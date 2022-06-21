@@ -5,6 +5,11 @@ from typing import Union, Optional
 from aiohttp import ClientSession
 
 
+class BoredException(Exception):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+
 class ActivityType(Enum):
     EDUCATION = "education"
     RECREATIONAL = "recreational"
@@ -19,14 +24,13 @@ class ActivityType(Enum):
 
 @dataclass
 class BoredActivity:
-    activity: Optional[str] = None
-    accessibility: Optional[float] = None
-    type: Optional[ActivityType] = None
-    participants: Optional[int] = None
-    price: Optional[float] = None
-    key: Optional[int] = None
-    link: Optional[str] = None
-    error: Optional[str] = None
+    activity: str
+    accessibility: float
+    type: ActivityType
+    participants: int
+    price: float
+    key: int
+    link: str
 
 
 class BoredClient:
@@ -39,8 +43,8 @@ class BoredClient:
         :return: dict
         """
         async with ClientSession() as session:
-            async with session.get(url) as new_data:
-                return await new_data.json()
+            async with session.get(url) as response:
+                return await response.json()
 
     async def get(
         self,
@@ -58,7 +62,7 @@ class BoredClient:
         """
         Gets a event with given parameters or random event if parameters not given.
 
-        :param key: A unique numeric id.
+        :param key: A unique numeric id. [1000000, 9999999]
         :param type: Type of the activity.
         :param participants: The number of people that this activity could involve [0, n].
         :param price: A factor describing the cost of the event with zero being free [0, 1].
@@ -97,6 +101,9 @@ class BoredClient:
                 f"{key.replace('_', '')}={value}" for key, value in payload.items()
             )
         )
+        if "error" in data:
+            raise BoredException(data["error"])
+
         if "type" in data:
             data["type"] = ActivityType[data["type"].upper()]
         if "key" in data:
@@ -110,11 +117,12 @@ class BoredClient:
 
         :return: BoredActivity
         """
+        return await self.get()
 
     async def get_by_key(self, key: int) -> BoredActivity:
         """
         Find an activity by its key.
-        :param key: A unique numeric id
+        :param key: A unique numeric id. Key can be in range [1000000, 9999999]
 
         :return: BoredActivity
         """

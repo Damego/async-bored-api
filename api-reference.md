@@ -24,14 +24,13 @@ Represents responce of request
 
 {% tabs %}
 {% tab title="Attributes" %}
-* activity: `Optional[str]`
-* accessibility: `Optional[float]`
-* type: `Optional[ActivityType]`
-* participants: `Optional[int]`
-* price: `Optional[float]`
-* key: `Optional[int]`
-* link: `Optional[str]`
-* error: `Optional[str]`
+* activity: `str`
+* accessibility: `float`
+* type: `ActivityType`
+* participants: `int`
+* price: `float`
+* key: `int`
+* link: `str`
 {% endtab %}
 {% endtabs %}
 
@@ -57,7 +56,9 @@ Gets a event with given parameters or random event if parameters not given.
 * min\_accessibility: `Optional[float]` = None
 * max\_accessibility: `Optional[float]` = None
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_random()
@@ -65,6 +66,7 @@ Gets a event with given parameters or random event if parameters not given.
 Find a random activity. Similar as `get()` **** with no given parameters.
 
 **Returns** `BoredActivity`\
+``**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_key()
@@ -75,7 +77,9 @@ Find an activity by its key.
 
 * key: `int`
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_type()
@@ -86,7 +90,9 @@ Find a random activity with a given type.
 
 * type: `Union[ActivityType, str]`
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_participants()
@@ -97,7 +103,9 @@ Find a random activity with a given number of participants.
 
 * participants: `int`
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_price()
@@ -108,7 +116,9 @@ Find an activity with a specified price.
 
 * price: `float`
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_min\_max\_price()
@@ -120,7 +130,9 @@ Find an event with a specified price in an inclusively constrained range.
 * min\_price: `float`
 * max\_price: `float`
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_accessibility()
@@ -131,7 +143,9 @@ Find a price in an inclusively constrained range.
 
 * accessibility: `float`
 
-**Returns** `BoredActivity`\
+**Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.\
 
 
 ### get\_by\_min\_max\_accessibility()
@@ -144,6 +158,8 @@ Find an event with a specified accessibility in an inclusively constrained range
 * max\_accessibility: `float`
 
 **Returns** `BoredActivity`
+
+**Raises** `BoredException` if nothing found.
 {% endtab %}
 {% endtabs %}
 

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from typing import Union, Optional
+from typing import Union, Optional, Any
 
 from aiohttp import ClientSession
 
@@ -34,11 +34,11 @@ class BoredActivity:
 class BoredClient:
     BASE_URL = "http://www.boredapi.com/api/activity/?"
 
-    async def _get_request(self, url: str) -> dict:
+    async def _get_request(self, url: str) -> dict[str,Any]:
         """
         Makes a GET request to bored api
         :param url: The url.
-        :return: dict
+        :return: dict[str,Any]
         """
         async with ClientSession() as session:
             async with session.get(url) as response:

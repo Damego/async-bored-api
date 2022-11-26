@@ -31,6 +31,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Damego/async-bored-api",
     packages=["bored_api"],
+    package_data={"bored_api":["py.typed"]},
     python_requires=">=3.6",
     classifiers=[
         "Intended Audience :: Developers",

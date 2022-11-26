@@ -6,9 +6,7 @@ from aiohttp import ClientSession
 
 
 class BoredException(Exception):
-    def __init__(self, *args):
-        super().__init__(*args)
-
+    """Base exception for the API."""
 
 class ActivityType(Enum):
     EDUCATION = "education"

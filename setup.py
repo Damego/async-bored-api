@@ -11,9 +11,6 @@ HERE = path.abspath(path.dirname(__file__))
 with open("README.md", "r", encoding="utf-8") as f:
     README = f.read()
 
-with open("requirements.txt", "r", encoding="utf-8") as f:
-    requirements = f.read()
-
 with open(path.join(HERE, PACKAGE_NAME, "__init__.py"), encoding="utf-8") as fp:
     VERSION = re.search('__version__ = "([^"]+)"', fp.read())[1]
 
@@ -25,7 +22,7 @@ setup(
     author_email="danyabatueff@gmail.com",
     description="The unofficial async API wrapper for http://www.boredapi.com/",
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=["aiohttp"],
     license="MIT License",
     long_description=README,
     long_description_content_type="text/markdown",

@@ -38,7 +38,7 @@ class BoredClient:
         """
         Makes a GET request to bored api
         :param url: The url.
-        :return: dict[str,Any]
+        :return: dict[str, Any]
         """
         async with ClientSession() as session:
             async with session.get(url) as response:

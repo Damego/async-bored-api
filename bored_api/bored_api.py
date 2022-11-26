@@ -34,7 +34,7 @@ class BoredActivity:
 class BoredClient:
     BASE_URL = "http://www.boredapi.com/api/activity/?"
 
-    async def _get_request(self, url: str) -> dict[str,Any]:
+    async def _get_request(self, url: str) -> dict[str, Any]:
         """
         Makes a GET request to bored api
         :param url: The url.

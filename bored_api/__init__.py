@@ -4,4 +4,4 @@ __all__ = [
     "ActivityType", "BoredActivity", "BoredClient", "BoredException"
 ]
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
